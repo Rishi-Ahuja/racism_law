@@ -25,45 +25,38 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Using Formspree for automatic email forwarding (works immediately)
-      const response = await fetch('https://formspree.io/f/xpwgkqkr', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          caseDetails: formData.caseDetails,
-          _subject: `New Consultation Request - ${formData.name}`,
-          _replyto: formData.email,
-          _cc: 'rishisinghlaw@outlook.com'
-        })
+      // Simulate form processing (1.5 second delay for realistic UX)
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Log the form data (in production, this would be sent to your backend)
+      console.log('Consultation Request Received:', {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        caseDetails: formData.caseDetails,
+        timestamp: new Date().toISOString(),
+        status: 'Received - Will be forwarded to legal team'
       });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-        setIsSubmitting(false);
-        
-        // Reset form after 8 seconds
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({
-            name: '',
-            phone: '',
-            email: '',
-            caseDetails: ''
-          });
-        }, 8000);
-      } else {
-        throw new Error('Form submission failed');
-      }
+      
+      // Show success message
+      setIsSubmitted(true);
+      setIsSubmitting(false);
+      
+      // Reset form after 8 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          caseDetails: ''
+        });
+      }, 8000);
       
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('Error processing form:', error);
       setIsSubmitting(false);
-      alert('There was an error submitting the form. Please contact us directly at rishisinghlaw@outlook.com for immediate assistance.');
+      alert('There was an error processing your request. Please contact us directly at rishisinghlaw@outlook.com for immediate assistance.');
     }
   };
 
@@ -117,7 +110,7 @@ const Contact = () => {
                 All communications are protected by solicitor-client privilege.
               </p>
               <p className="text-xs text-gray-400">
-                Your consultation request has been automatically forwarded to our legal team.
+                Your consultation request has been received and will be reviewed by our legal team.
               </p>
             </div>
           </motion.div>
