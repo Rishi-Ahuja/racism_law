@@ -25,38 +25,42 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate form processing (1.5 second delay for realistic UX)
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Log the form data (in production, this would be sent to your backend)
-      console.log('Consultation Request Received:', {
-        name: formData.name,
-        phone: formData.phone,
-        email: formData.email,
-        caseDetails: formData.caseDetails,
-        timestamp: new Date().toISOString(),
-        status: 'Received - Will be forwarded to legal team'
+      // Using Vercel API for form submission
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          caseDetails: formData.caseDetails,
+        })
       });
-      
-      // Show success message
-      setIsSubmitted(true);
-      setIsSubmitting(false);
-      
-      // Reset form after 8 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({
-          name: '',
-          phone: '',
-          email: '',
-          caseDetails: ''
-        });
-      }, 8000);
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setIsSubmitting(false);
+        
+        // Reset form after 8 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: '',
+            phone: '',
+            email: '',
+            caseDetails: ''
+          });
+        }, 8000);
+      } else {
+        throw new Error('Form submission failed');
+      }
       
     } catch (error) {
-      console.error('Error processing form:', error);
+      console.error('Error submitting form:', error);
       setIsSubmitting(false);
-      alert('There was an error processing your request. Please contact us directly at rishisinghlaw@outlook.com for immediate assistance.');
+      alert('There was an error submitting the form. Please contact us directly at rishisinghlaw@outlook.com for immediate assistance.');
     }
   };
 
@@ -110,7 +114,7 @@ const Contact = () => {
                 All communications are protected by solicitor-client privilege.
               </p>
               <p className="text-xs text-gray-400">
-                Your consultation request has been received and will be reviewed by our legal team.
+                Your consultation request has been automatically forwarded to our legal team via email.
               </p>
             </div>
           </motion.div>
@@ -156,7 +160,10 @@ const Contact = () => {
               Get Your Free Consultation
             </h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6" data-netlify="true" name="consultation-request">
+              {/* Hidden form for Vercel Forms detection */}
+              <input type="hidden" name="form-name" value="consultation-request" />
+              
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-text mb-2">
                   Full Name *
