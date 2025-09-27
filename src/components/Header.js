@@ -150,20 +150,20 @@ const Header = () => {
             borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
           }}
         >
-          <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-between px-3 sm:px-4 lg:px-6 py-3 sm:py-4">
         {/* Logo */}
         <motion.div
           whileHover={{ scale: 1.05 }}
           className="flex items-center space-x-3"
         >
-          <div className="w-16 h-16 rounded-lg overflow-hidden shadow-lg">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-lg overflow-hidden shadow-lg">
             <img 
               src="/logo_1.jpeg" 
               alt="Racism Lawyer Toronto Logo" 
               className="w-full h-full object-cover"
             />
           </div>
-          <span className="text-text text-xl font-bold hidden sm:block">
+          <span className="text-text text-lg sm:text-xl font-bold hidden xs:block">
             Racism Lawyer Toronto
           </span>
         </motion.div>

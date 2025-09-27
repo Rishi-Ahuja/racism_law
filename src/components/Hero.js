@@ -60,7 +60,7 @@ const Hero = () => {
       </div>
 
       {/* Enhanced Content with Better Typography */}
-      <div className="relative z-10 container-custom text-center text-white px-6 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-20">
+      <div className="relative z-10 container-custom text-center text-white px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -72,10 +72,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-16 mx-4 sm:mx-6 lg:mx-8 my-8 sm:my-12 lg:my-16"
+            className="mb-8 sm:mb-12 lg:mb-16 mx-2 sm:mx-4 lg:mx-6 my-4 sm:my-6 lg:my-8"
           >
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-8 leading-[1.2] tracking-tight">
-              <span className="block bg-gradient-to-r from-white via-accent to-primary bg-clip-text text-transparent pb-4 pt-2">
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.2] tracking-tight">
+              <span className="block bg-gradient-to-r from-white via-accent to-primary bg-clip-text text-transparent pb-2 sm:pb-4 pt-1 sm:pt-2">
                 Justice for All
               </span>
             </h1>
@@ -85,12 +85,12 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="space-y-6"
+              className="space-y-3 sm:space-y-4 lg:space-y-6"
             >
-              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-gray-100 leading-tight">
+              <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-gray-100 leading-tight px-2">
                 Fighting Racism and Discrimination
               </p>
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-gray-200">
+              <p className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-gray-200 px-2">
                 Across Toronto & Canada
               </p>
             </motion.div>
@@ -103,10 +103,10 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-20 max-w-6xl mx-auto"
           >
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-white leading-relaxed mb-6">
+            <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-white leading-relaxed mb-4 sm:mb-6 px-2">
               Your rights matter. Your voice matters.
             </p>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 font-light">
+            <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-200 font-light px-2">
               Let us fight for you.
             </p>
           </motion.div>
@@ -116,20 +116,20 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-8 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 justify-center items-center px-4"
           >
             <motion.button
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('#contact')}
-              className="group relative overflow-hidden bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent text-white text-xl sm:text-2xl px-10 sm:px-12 py-5 sm:py-6 rounded-full font-bold flex items-center space-x-4 shadow-2xl hover:shadow-3xl transition-all duration-500"
+              className="group relative overflow-hidden bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent text-white text-lg sm:text-xl lg:text-2xl px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 rounded-full font-bold flex items-center space-x-3 sm:space-x-4 shadow-2xl hover:shadow-3xl transition-all duration-500 w-full sm:w-auto"
               style={{
                 backdropFilter: 'blur(20px)',
                 boxShadow: '0 20px 40px rgba(197, 139, 46, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <Phone className="w-6 h-6 sm:w-7 sm:h-7 relative z-10" />
+              <Phone className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 relative z-10" />
               <span className="relative z-10">Free Consultation</span>
             </motion.button>
             
@@ -137,14 +137,14 @@ const Hero = () => {
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('#about')}
-              className="group relative overflow-hidden bg-white/10 backdrop-blur-xl border-2 border-white/40 text-white hover:bg-white/20 hover:text-primary text-xl sm:text-2xl px-10 sm:px-12 py-5 sm:py-6 rounded-full font-bold flex items-center space-x-4 transition-all duration-500 hover:border-white/60"
+              className="group relative overflow-hidden bg-white/10 backdrop-blur-xl border-2 border-white/40 text-white hover:bg-white/20 hover:text-primary text-lg sm:text-xl lg:text-2xl px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 rounded-full font-bold flex items-center space-x-3 sm:space-x-4 transition-all duration-500 hover:border-white/60 w-full sm:w-auto"
               style={{
                 backdropFilter: 'blur(20px)',
                 boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <BookOpen className="w-6 h-6 sm:w-7 sm:h-7 relative z-10" />
+              <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 relative z-10" />
               <span className="relative z-10">Learn More</span>
             </motion.button>
           </motion.div>
