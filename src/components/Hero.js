@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Phone, BookOpen } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
 const Hero = () => {
   const scrollToSection = (href) => {
@@ -11,167 +11,96 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Enhanced Skyline Background */}
-      <div className="absolute inset-0 z-0">
-        {/* Your skyline image with enhanced processing */}
-        <div 
-          className="w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url(/skyline.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center bottom',
-            filter: 'brightness(0.1) contrast(1.5) saturate(0.8) blur(0.5px)',
-            imageRendering: 'high-quality',
-            WebkitImageRendering: 'high-quality',
-            MozImageRendering: 'high-quality',
-            msImageRendering: 'high-quality',
-            transform: 'scale(1.02)',
-          }}
-        />
-        
-        {/* Enhanced gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-transparent to-accent/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        
-        {/* Animated light particles */}
-        <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-white/30 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                opacity: [0.3, 1, 0.3],
-                scale: [0.8, 1.2, 0.8],
-              }}
-              transition={{
-                duration: 2 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
-        </div>
-      </div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark">
+      {/* Dark background */}
+      <div className="absolute inset-0 z-0 bg-dark"></div>
 
-      {/* Enhanced Content with Better Typography */}
-      <div className="relative z-10 container-custom text-center text-white px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+      {/* Main Content */}
+      <div className="relative z-10 container-custom text-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-7xl mx-auto"
+          transition={{ duration: 0.6 }}
+          className="max-w-5xl mx-auto"
         >
-          {/* Main Headline with Better Spacing */}
+          {/* Logo Section */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-8 sm:mb-12 lg:mb-16 mx-2 sm:mx-4 lg:mx-6 my-4 sm:my-6 lg:my-8"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8 sm:mb-12"
           >
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.2] tracking-tight">
-              <span className="block bg-gradient-to-r from-white via-accent to-primary bg-clip-text text-transparent pb-2 sm:pb-4 pt-1 sm:pt-2">
-                Justice for All
-              </span>
-            </h1>
+            <div className="flex justify-center mb-6">
+              <div className="relative">
+                <img 
+                  src="/logo.png" 
+                  alt="Racism Lawyer Toronto Logo" 
+                  className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mx-auto object-contain drop-shadow-2xl"
+                  loading="eager"
+                />
+              </div>
+            </div>
             
-            {/* Subtitle with Better Hierarchy */}
+            {/* Organization Name */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="space-y-3 sm:space-y-4 lg:space-y-6"
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="space-y-2"
             >
-              <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-gray-100 leading-tight px-2">
-                Fighting Racism and Discrimination
-              </p>
-              <p className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-gray-200 px-2">
-                Across Toronto & Canada
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gold-500 tracking-wider uppercase">
+                Racism Lawyer Toronto
+              </h1>
+              <p className="text-lg sm:text-xl md:text-2xl text-white mt-4">
+                Expert Discrimination & Human Rights Lawyers
               </p>
             </motion.div>
           </motion.div>
 
-          {/* Enhanced Call to Action Text */}
+          {/* Mission Statement */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mb-20 max-w-6xl mx-auto"
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mb-10 sm:mb-12 lg:mb-16"
           >
-            <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-white leading-relaxed mb-4 sm:mb-6 px-2">
-              Your rights matter. Your voice matters.
-            </p>
-            <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-200 font-light px-2">
-              Let us fight for you.
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-relaxed max-w-4xl mx-auto px-4">
+              At <span className="text-gold-500 font-semibold">Racism Lawyer Toronto</span>, we stand firmly against all forms of discrimination and <span className="text-gold-500 font-semibold">racism</span>, advocating for a world where justice is blind to color and equality prevails for all. Our dedicated team of passionate legal professionals is committed to fighting racial injustices through the power of <span className="text-gold-500 font-semibold">law</span>.
             </p>
           </motion.div>
 
-          {/* Enhanced CTA Buttons */}
+          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 justify-center items-center px-4"
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             <motion.button
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => scrollToSection('#contact')}
-              className="group relative overflow-hidden bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent text-white text-lg sm:text-xl lg:text-2xl px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 rounded-full font-bold flex items-center space-x-3 sm:space-x-4 shadow-2xl hover:shadow-3xl transition-all duration-500 w-full sm:w-auto"
-              style={{
-                backdropFilter: 'blur(20px)',
-                boxShadow: '0 20px 40px rgba(197, 139, 46, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-              }}
+              className="group relative overflow-hidden border-2 border-gold-500 bg-dark/80 backdrop-blur-sm text-white px-8 sm:px-12 lg:px-16 py-4 sm:py-5 lg:py-6 rounded-lg font-bold text-lg sm:text-xl lg:text-2xl transition-all duration-200 shadow-2xl hover:shadow-gold-500/50"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <Phone className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 relative z-10" />
-              <span className="relative z-10">Free Consultation</span>
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => scrollToSection('#about')}
-              className="group relative overflow-hidden bg-white/10 backdrop-blur-xl border-2 border-white/40 text-white hover:bg-white/20 hover:text-primary text-lg sm:text-xl lg:text-2xl px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 rounded-full font-bold flex items-center space-x-3 sm:space-x-4 transition-all duration-500 hover:border-white/60 w-full sm:w-auto"
-              style={{
-                backdropFilter: 'blur(20px)',
-                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 relative z-10" />
-              <span className="relative z-10">Learn More</span>
+              <span className="relative z-10 flex items-center justify-center space-x-3">
+                <BookOpen className="w-5 h-5 sm:w-6 sm:h-6" />
+                <span>Book An Appointment</span>
+              </span>
             </motion.button>
           </motion.div>
         </motion.div>
+      </div>
 
-        {/* Enhanced Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2"
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+        <button
+          onClick={() => scrollToSection('#services')}
+          className="p-3 rounded-full bg-gold-500/20 backdrop-blur-sm border border-gold-500/30 hover:bg-gold-500/30 transition-all duration-200"
+          aria-label="Scroll to services"
         >
-          <motion.button
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            onClick={() => scrollToSection('#about')}
-            className="group relative p-3 sm:p-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
-            style={{
-              backdropFilter: 'blur(20px)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
-            }}
-            aria-label="Scroll to next section"
-          >
-            <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-accent transition-colors duration-300" />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </motion.button>
-        </motion.div>
+          <svg className="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
       </div>
     </section>
   );

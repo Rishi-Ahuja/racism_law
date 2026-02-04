@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, CheckCircle } from 'lucide-react';
+import { Phone, Mail, CheckCircle } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
-    phone: '',
     email: '',
-    caseDetails: ''
+    phone: '',
+    message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,7 +25,6 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Using Vercel API for form submission
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -35,7 +34,7 @@ const Contact = () => {
           name: formData.name,
           phone: formData.phone,
           email: formData.email,
-          caseDetails: formData.caseDetails,
+          caseDetails: formData.message,
         })
       });
 
@@ -43,14 +42,13 @@ const Contact = () => {
         setIsSubmitted(true);
         setIsSubmitting(false);
         
-        // Reset form after 8 seconds
         setTimeout(() => {
           setIsSubmitted(false);
           setFormData({
             name: '',
             phone: '',
             email: '',
-            caseDetails: ''
+            message: ''
           });
         }, 8000);
       } else {
@@ -64,36 +62,9 @@ const Contact = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: 'Contact',
-      details: 'Use the form below to reach us',
-      subtitle: 'We respond within 24 hours'
-    },
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: 'Consultation',
-      details: 'Free initial consultation',
-      subtitle: 'No obligation, confidential'
-    },
-    {
-      icon: <MapPin className="w-6 h-6" />,
-      title: 'Service Area',
-      details: 'Toronto & Canada',
-      subtitle: 'Nationwide representation'
-    },
-    {
-      icon: <Clock className="w-6 h-6" />,
-      title: 'Response Time',
-      details: 'Quick response guaranteed',
-      subtitle: 'Urgent cases prioritized'
-    }
-  ];
-
   if (isSubmitted) {
     return (
-      <section id="contact" className="section-padding bg-neutral">
+      <section id="contact" className="section-padding bg-dark relative overflow-hidden">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -101,20 +72,14 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="max-w-2xl mx-auto text-center"
           >
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
-              <h2 className="text-3xl font-bold text-text mb-4">
+            <div className="bg-dark border-2 border-gold-500 rounded-lg shadow-xl p-8">
+              <CheckCircle className="w-16 h-16 text-gold-500 mx-auto mb-6" />
+              <h2 className="text-3xl font-bold text-white mb-4">
                 Thank You for Your Message
               </h2>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-gray-300 mb-6">
                 We have received your consultation request. Our legal team will review your case 
                 and contact you within 24 hours for your free, confidential consultation.
-              </p>
-              <p className="text-sm text-gray-500 mb-4">
-                All communications are protected by solicitor-client privilege.
-              </p>
-              <p className="text-xs text-gray-400">
-                Your consultation request has been automatically forwarded to our legal team via email.
               </p>
             </div>
           </motion.div>
@@ -124,50 +89,30 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="section-padding bg-gradient-to-br from-neutral via-white to-neutral relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 w-60 h-60 bg-primary rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-40 h-40 bg-accent rounded-full blur-3xl"></div>
+    <section id="contact" className="section-padding bg-dark relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90"></div>
       </div>
-      
-      <div className="container-custom relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-5xl md:text-6xl font-bold text-text mb-8 gradient-text">
-            Free Confidential Consultation
-          </h2>
-          <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            We're here to listen. All consultations are private and protected by solicitor-client privilege.
-          </p>
-        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
+      <div className="container-custom relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Left Column - ONLINE INQUIRY Form */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
             viewport={{ once: true }}
-            className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 sm:p-8 lg:p-10 border border-white/20"
+            className="bg-dark/50 backdrop-blur-sm border border-gold-500/30 rounded-lg p-6 sm:p-8 lg:p-10"
           >
-            <h3 className="text-2xl sm:text-3xl font-bold text-text mb-6 sm:mb-8 gradient-text">
-              Get Your Free Consultation
-            </h3>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 uppercase tracking-wider">
+              Online Inquiry
+            </h2>
             
             <form onSubmit={handleSubmit} className="space-y-6" data-netlify="true" name="consultation-request">
-              {/* Hidden form for Vercel Forms detection */}
               <input type="hidden" name="form-name" value="consultation-request" />
               
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-text mb-2">
-                  Full Name *
-                </label>
                 <input
                   type="text"
                   id="name"
@@ -175,31 +120,12 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm text-base sm:text-lg"
-                  placeholder="Your full name"
+                  placeholder="Your Name"
+                  className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-white/10 border-2 border-white/20 rounded-lg text-white placeholder-gray-400 focus:border-gold-500 focus:outline-none transition-all duration-300 backdrop-blur-sm"
                 />
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-text mb-2">
-                  Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm text-base sm:text-lg"
-                  placeholder="(416) 555-0123"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-text mb-2">
-                  Email Address *
-                </label>
                 <input
                   type="email"
                   id="email"
@@ -207,106 +133,91 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm text-base sm:text-lg"
-                  placeholder="your.email@example.com"
+                  placeholder="Your E-mail"
+                  className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-white/10 border-2 border-white/20 rounded-lg text-white placeholder-gray-400 focus:border-gold-500 focus:outline-none transition-all duration-300 backdrop-blur-sm"
                 />
               </div>
 
               <div>
-                <label htmlFor="caseDetails" className="block text-sm font-medium text-text mb-2">
-                  Case Details *
-                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="Phone Number"
+                  className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-white/10 border-2 border-white/20 rounded-lg text-white placeholder-gray-400 focus:border-gold-500 focus:outline-none transition-all duration-300 backdrop-blur-sm"
+                />
+              </div>
+
+              <div>
                 <textarea
-                  id="caseDetails"
-                  name="caseDetails"
-                  value={formData.caseDetails}
+                  id="message"
+                  name="message"
+                  value={formData.message}
                   onChange={handleInputChange}
                   required
                   rows={6}
-                  className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm resize-none text-base sm:text-lg"
-                  placeholder="Please describe what happened, when it occurred, and how it has affected you. Include any relevant details about witnesses, documentation, or previous complaints."
+                  placeholder="Your Message"
+                  className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-white/10 border-2 border-white/20 rounded-lg text-white placeholder-gray-400 focus:border-gold-500 focus:outline-none transition-all duration-300 backdrop-blur-sm resize-none"
                 />
               </div>
 
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent text-white text-lg sm:text-xl py-4 sm:py-5 rounded-full font-bold shadow-xl hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="w-full bg-white text-dark px-6 py-3 rounded-lg font-semibold hover:bg-gold-500 hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed border-2 border-white"
               >
-                {isSubmitting ? 'Submitting...' : 'Submit Consultation Request'}
+                {isSubmitting ? 'Submitting...' : 'Submit'}
               </motion.button>
             </form>
-
-            <p className="text-sm text-gray-500 mt-4">
-              * All fields are required. Your information is confidential and protected by attorney-client privilege.
-            </p>
           </motion.div>
 
-          {/* Contact Information */}
+          {/* Right Column - CONTACT DETAILS */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="bg-dark/50 backdrop-blur-sm border border-gold-500/30 rounded-lg p-6 sm:p-8 lg:p-10"
           >
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h3 className="text-2xl font-semibold text-text mb-6">
-                Contact Information
-              </h3>
-              
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <motion.div
-                    key={info.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 * index }}
-                    viewport={{ once: true }}
-                    className="flex items-start space-x-4"
-                  >
-                    <div className="text-primary mt-1">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-text">
-                        {info.title}
-                      </h4>
-                      <p className="text-lg text-gray-700">
-                        {info.details}
-                      </p>
-                      <p className="text-sm text-gray-500">
-                        {info.subtitle}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-primary text-white rounded-lg p-8">
-              <h4 className="text-xl font-semibold mb-4">
-                What to Bring to Your Consultation
-              </h4>
-              <ul className="space-y-2 text-sm">
-                <li>• Any documentation related to the discrimination</li>
-                <li>• Timeline of events if possible</li>
-                <li>• Witness information</li>
-                <li>• Employment records (if workplace discrimination)</li>
-                <li>• Medical records (if health has been affected)</li>
-              </ul>
-            </div>
-
-            <div className="bg-secondary rounded-lg p-6">
-              <h4 className="text-lg font-semibold text-text mb-3">
-                Languages Spoken
-              </h4>
-              <p className="text-gray-700">
-                We provide services in English, French, Spanish, Mandarin, and others. 
-                Professional interpreters are available when needed.
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 uppercase tracking-wider">
+              Contact Details
+            </h2>
+            
+            <div className="space-y-6 mb-8">
+              <p className="text-white text-sm sm:text-base lg:text-lg leading-relaxed">
+                At <span className="text-gold-500 font-semibold">Racism Lawyer Toronto</span>, we stand firmly against all forms of discrimination and <span className="text-gold-500 font-semibold">racism</span>, advocating for a world where justice is blind to color and equality prevails for all. Our dedicated team of passionate legal professionals is committed to fighting racial injustices through the power of <span className="text-gold-500 font-semibold">law</span>.
               </p>
+            </div>
+
+            <div className="space-y-4 border-t border-gold-500/30 pt-6">
+              <div className="flex items-center space-x-4">
+                <div className="text-gold-500">
+                  <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
+                </div>
+                <div>
+                  <p className="text-white font-semibold">Tel:</p>
+                  <a href="tel:+12895006616" className="text-gold-500 hover:text-gold-400 transition-colors duration-300">
+                    (289) 500-6616
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="text-gold-500">
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
+                </div>
+                <div>
+                  <p className="text-white font-semibold">Email:</p>
+                  <a href="mailto:info@racismlawyertoronto.ca" className="text-gold-500 hover:text-gold-400 transition-colors duration-300">
+                    info@racismlawyertoronto.ca
+                  </a>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

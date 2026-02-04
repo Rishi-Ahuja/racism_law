@@ -6,15 +6,32 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#006D5B',
-        secondary: '#F4EDE5',
-        accent: '#C58B2E',
-        neutral: '#FAFAFA',
-        text: '#222',
+        // Dark theme with gold accents
+        primary: '#D4AF37', // Gold
+        secondary: '#1a1a1a', // Dark brown/black
+        accent: '#FFD700', // Bright gold
+        neutral: '#2a2a2a', // Dark gray
+        text: '#ffffff', // White text
+        dark: '#0a0a0a', // Very dark background
+        gold: {
+          50: '#fffef5',
+          100: '#fffceb',
+          200: '#fff8d1',
+          300: '#fff4b7',
+          400: '#ffe983',
+          500: '#D4AF37', // Main gold
+          600: '#b8941f',
+          700: '#9a7a17',
+          800: '#7c600f',
+          900: '#5e4607',
+        },
       },
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
         'serif': ['Playfair Display', 'serif'],
+      },
+      backgroundImage: {
+        'legal-pattern': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23D4AF37\" fill-opacity=\"0.03\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
       },
     },
   },
