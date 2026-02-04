@@ -1,13 +1,11 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { useReveal } from '../hooks/useReveal';
 import { ArrowRight } from 'lucide-react';
 
 const Services = () => {
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   const services = [
@@ -28,24 +26,20 @@ const Services = () => {
     }
   ];
 
+  const refBtn = useReveal();
+
   return (
     <section id="services" className="section-padding bg-white relative overflow-hidden" aria-label="Legal Services">
       <div className="container-custom">
         <h2 className="text-4xl md:text-5xl font-bold text-dark mb-12 text-center">
           Our Legal Services
         </h2>
-        {/* Services Grid */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12">
           {services.map((service, index) => (
-            <motion.article
+            <article
               key={service.title}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              viewport={{ once: true }}
               className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-200"
             >
-              {/* Image Container */}
               <div className="relative h-64 overflow-hidden">
                 <img
                   src={service.image}
@@ -54,8 +48,6 @@ const Services = () => {
                   loading="lazy"
                 />
               </div>
-
-              {/* Content */}
               <div className="p-6">
                 <h3 className="text-xl lg:text-2xl font-bold text-dark mb-4 group-hover:text-gold-500 transition-colors duration-200">
                   {service.title} - Toronto Lawyer
@@ -64,18 +56,11 @@ const Services = () => {
                   {service.description}
                 </p>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
 
-        {/* See All Services Button */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
+        <div ref={refBtn} className="reveal text-center">
           <button
             onClick={() => scrollToSection('#contact')}
             className="group inline-flex items-center space-x-3 bg-gold-500 text-dark px-8 py-4 rounded-lg font-bold text-lg lg:text-xl shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
@@ -83,7 +68,7 @@ const Services = () => {
             <span>SEE ALL SERVICES</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

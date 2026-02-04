@@ -23,16 +23,16 @@ export default async function handler(req, res) {
       caseDetails
     });
 
-    return res.status(200).json({ 
-      success: true, 
-      message: 'Consultation request received successfully' 
+    return res.status(200).json({
+      success: true,
+      message: 'Consultation request received successfully'
     });
 
   } catch (error) {
     console.error('Error processing form submission:', error);
-    return res.status(500).json({ 
+    return res.status(500).json({
       error: 'Internal server error',
-      message: 'There was an error processing your request' 
+      message: 'There was an error processing your request'
     });
   }
 }
