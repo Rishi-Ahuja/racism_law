@@ -1,29 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
-import WhyChooseUs from './components/WhyChooseUs';
 import About from './components/About';
-import EmergencyBanner from './components/EmergencyBanner';
 import CTA from './components/CTA';
-import Contact from './components/Contact';
+import WhoWeAre from './components/WhoWeAre';
+import IntakeForm from './components/IntakeForm';
+import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+import PrivacyPage from './pages/PrivacyPage';
 import './index.css';
 
 function App() {
+  const [showPrivacy, setShowPrivacy] = useState(false);
+
+  if (showPrivacy) {
+    return (
+      <div className="App min-h-screen page-bg text-white">
+        <PrivacyPage onBack={() => setShowPrivacy(false)} />
+      </div>
+    );
+  }
+
   return (
-    <div className="App bg-dark" itemScope itemType="https://schema.org/LegalService">
+    <div className="App min-h-screen bg-dark page-bg" itemScope itemType="https://schema.org/LegalService">
       <Header />
       <main>
         <Hero />
         <Services />
-        <WhyChooseUs />
         <About />
-        <EmergencyBanner />
         <CTA />
-        <Contact />
+        <WhoWeAre />
+        <IntakeForm />
+        <FAQ />
       </main>
-      <Footer />
+      <Footer onPrivacyClick={() => setShowPrivacy(true)} />
     </div>
   );
 }
