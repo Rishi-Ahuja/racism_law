@@ -24,30 +24,30 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="section-padding bg-neutral">
+    <section id="faq" className="section-padding page-bg">
       <div className="container-custom">
         <div ref={refHead} className="reveal text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-text mb-6">Frequently Asked Questions</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-100 mb-6">Frequently Asked Questions</h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Get answers to common questions about discrimination cases and our legal services.
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
           {faqs.map((faq, index) => (
-            <div key={index} className="mb-4">
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+            <div key={index} className="mb-3">
+              <div className="rounded-lg border border-white/10 bg-white/[0.04] hover:border-white/20 transition-colors duration-200">
                 <button
                   onClick={() => setExpandedFAQ(expandedFAQ === index ? null : index)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 hover:bg-white/[0.04] transition-colors duration-200 rounded-lg"
                 >
-                  <h3 className="text-lg font-semibold text-text pr-4">{faq.question}</h3>
-                  {expandedFAQ === index ? <ChevronUp className="w-5 h-5 text-primary flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-primary flex-shrink-0" />}
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-100 pr-4">{faq.question}</h3>
+                  {expandedFAQ === index ? <ChevronUp className="w-5 h-5 text-gold-500 flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-gold-500 flex-shrink-0" />}
                 </button>
                 <div className={`accordion-grid ${expandedFAQ === index ? 'open' : ''}`}>
                   <div className="accordion-inner">
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                    <div className="px-5 sm:px-6 pb-5 sm:pb-6">
+                      <p className="text-gray-400 leading-relaxed">{faq.answer}</p>
                     </div>
                   </div>
                 </div>
@@ -57,12 +57,12 @@ const FAQ = () => {
         </div>
 
         <div ref={refCta} className="reveal mt-16 text-center">
-          <div className="bg-primary text-white rounded-lg p-8 max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">Still Have Questions?</h3>
-            <p className="text-lg mb-6 opacity-90">
+          <div className="bg-white/[0.04] border border-white/10 text-gray-100 rounded-lg p-8 max-w-3xl mx-auto">
+            <h3 className="text-2xl font-bold mb-4 text-gray-100">Still Have Questions?</h3>
+            <p className="text-lg mb-6 text-gray-400">
               Our legal team is here to answer all your questions during your free, confidential consultation.
             </p>
-            <button onClick={scrollToContact} className="hover-scale btn-secondary bg-accent hover:bg-accent/90 text-lg px-8 py-4">
+            <button onClick={scrollToContact} className="hover-scale bg-gold-500 hover:bg-gold-600 text-dark text-lg px-8 py-4 rounded-lg font-semibold">
               Get Your Free Consultation
             </button>
           </div>

@@ -29,30 +29,30 @@ const Services = () => {
   const refBtn = useReveal();
 
   return (
-    <section id="services" className="section-padding bg-white relative overflow-hidden" aria-label="Legal Services">
+    <section id="services" className="section-padding page-bg relative overflow-hidden" aria-label="Legal Services">
       <div className="container-custom">
-        <h2 className="text-4xl md:text-5xl font-bold text-dark mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-200 mb-12 text-center">
           Our Legal Services
         </h2>
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12">
           {services.map((service, index) => (
             <article
               key={service.title}
-              className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-200"
+              className="group bg-white/5 border border-white/10 rounded-lg overflow-hidden hover:border-gold-500/30 transition-all duration-200"
             >
               <div className="relative h-64 overflow-hidden">
                 <img
                   src={service.image}
                   alt={`${service.title} legal services in Toronto`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200 opacity-90"
                   loading="lazy"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl lg:text-2xl font-bold text-dark mb-4 group-hover:text-gold-500 transition-colors duration-200">
+                <h3 className="text-xl lg:text-2xl font-bold text-gray-200 mb-4 group-hover:text-gold-500 transition-colors duration-200">
                   {service.title} - Toronto Lawyer
                 </h3>
-                <p className="text-gray-700 leading-relaxed text-sm lg:text-base">
+                <p className="text-gray-400 leading-relaxed text-sm lg:text-base">
                   {service.description}
                 </p>
               </div>

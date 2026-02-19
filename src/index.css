@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,10 +28,10 @@
   }
   
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
     background-color: #0a0a0a;
-    color: #ffffff;
+    color: #d4d4d4;
     margin: 0;
     padding: 0;
   }
@@ -43,7 +43,7 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
     font-weight: 600;
   }
 }
@@ -164,7 +164,50 @@
     overflow: hidden;
   }
 
-  /* Smooth scrollbar */
+  /* Page background: dark with subtle pattern (no gradient) */
+  .page-bg {
+    background-color: #0a0a0a;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+    background-size: 32px 32px;
+  }
+
+  /* Form card: subtle border and hover effect */
+  .form-card {
+    padding: 2rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0.5rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .form-card:hover {
+    border-color: rgba(212, 175, 55, 0.25);
+    box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.08);
+  }
+
+  /* Minimal dark-theme inputs */
+  .input-minimal {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0.375rem;
+    color: #d4d4d4;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .input-minimal::placeholder {
+    color: rgba(255,255,255,0.3);
+  }
+  .input-minimal:focus {
+    outline: none;
+    border-color: rgba(212, 175, 55, 0.5);
+    background: rgba(255,255,255,0.06);
+  }
+
+  .btn-minimal {
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  /* Smooth scrollbar - dark theme */
   ::-webkit-scrollbar {
     width: 10px;
   }

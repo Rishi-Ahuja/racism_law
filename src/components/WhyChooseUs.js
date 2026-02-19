@@ -19,18 +19,18 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="section-padding bg-gray-100 relative overflow-hidden" aria-label="Why Choose Us">
+    <section className="section-padding page-bg relative overflow-hidden" aria-label="Why Choose Us">
       <div className="container-custom">
-        <h2 className="text-4xl md:text-5xl font-bold text-dark mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-200 mb-12 text-center">
           Why Choose Racism Lawyer Toronto
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
           {features.map((feature) => (
             <div key={feature.title} className="text-center group">
-              <div className="flex justify-center mb-4 text-gold-500 group-hover:text-gold-600 transition-colors duration-200">
+              <div className="flex justify-center mb-4 text-gold-500 group-hover:text-gold-400 transition-colors duration-200">
                 {feature.icon}
               </div>
-              <h3 className="text-sm md:text-base lg:text-lg font-semibold text-dark">
+              <h3 className="text-sm md:text-base lg:text-lg font-semibold text-gray-300">
                 {feature.title}
               </h3>
             </div>

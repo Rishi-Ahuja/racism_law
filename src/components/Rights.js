@@ -33,7 +33,7 @@ const Rights = () => {
     <section id="rights" className="section-padding bg-white">
       <div className="container-custom">
         <div ref={refHead} className="reveal text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-text mb-6">Know Your Rights</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Know Your Rights</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Understanding your legal protections is the first step toward justice.
           </p>
@@ -41,25 +41,25 @@ const Rights = () => {
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {rightsInfo.map((r) => (
-            <div key={r.title} className="bg-secondary p-6 rounded-lg text-center card-hover hover-scale transition-transform duration-200">
-              <div className="text-primary mb-4 flex justify-center">{r.icon}</div>
-              <h3 className="text-xl font-semibold text-text mb-3">{r.title}</h3>
+            <div key={r.title} className="bg-gray-100 p-6 rounded-lg text-center card-hover hover-scale transition-transform duration-200">
+              <div className="text-gold-500 mb-4 flex justify-center">{r.icon}</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{r.title}</h3>
               <p className="text-gray-700">{r.description}</p>
             </div>
           ))}
         </div>
 
         <div className="space-y-6">
-          <div className="bg-neutral rounded-lg p-6">
+          <div className="bg-gray-100 rounded-lg p-6">
             <button
               onClick={() => toggleExpanded('discrimination')}
               className="w-full flex items-center justify-between text-left"
             >
-              <h3 className="text-2xl font-semibold text-text flex items-center">
-                <AlertTriangle className="w-6 h-6 text-primary mr-3" />
+              <h3 className="text-2xl font-semibold text-gray-900 flex items-center">
+                <AlertTriangle className="w-6 h-6 text-gold-500 mr-3" />
                 What Constitutes Discrimination
               </h3>
-              {expandedSection === 'discrimination' ? <ChevronUp className="w-6 h-6 text-primary" /> : <ChevronDown className="w-6 h-6 text-primary" />}
+              {expandedSection === 'discrimination' ? <ChevronUp className="w-6 h-6 text-gold-500" /> : <ChevronDown className="w-6 h-6 text-gold-500" />}
             </button>
             <div className={`accordion-grid ${expandedSection === 'discrimination' ? 'open' : ''}`}>
               <div className="accordion-inner">
@@ -75,16 +75,16 @@ const Rights = () => {
             </div>
           </div>
 
-          <div className="bg-neutral rounded-lg p-6">
+          <div className="bg-gray-100 rounded-lg p-6">
             <button
               onClick={() => toggleExpanded('timeLimits')}
               className="w-full flex items-center justify-between text-left"
             >
-              <h3 className="text-2xl font-semibold text-text flex items-center">
-                <Clock className="w-6 h-6 text-primary mr-3" />
+              <h3 className="text-2xl font-semibold text-gray-900 flex items-center">
+                <Clock className="w-6 h-6 text-gold-500 mr-3" />
                 Time Limits for Filing Claims
               </h3>
-              {expandedSection === 'timeLimits' ? <ChevronUp className="w-6 h-6 text-primary" /> : <ChevronDown className="w-6 h-6 text-primary" />}
+              {expandedSection === 'timeLimits' ? <ChevronUp className="w-6 h-6 text-gold-500" /> : <ChevronDown className="w-6 h-6 text-gold-500" />}
             </button>
             <div className={`accordion-grid ${expandedSection === 'timeLimits' ? 'open' : ''}`}>
               <div className="accordion-inner">
@@ -96,7 +96,7 @@ const Rights = () => {
                     </div>
                   ))}
                   <div className="mt-4 p-4 bg-accent/10 rounded-lg border-l-4 border-accent">
-                    <p className="text-text font-semibold">
+                    <p className="text-gray-900 font-semibold">
                       ⚠️ Act fast – most human rights complaints must be filed within 1 year.
                     </p>
                   </div>

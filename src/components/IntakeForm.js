@@ -78,21 +78,27 @@ const IntakeForm = () => {
   if (isSubmitted) {
     return (
       <section id="contact" className="py-20 sm:py-28 px-4 sm:px-6 page-bg">
-        <div className="max-w-xl mx-auto text-center animate-fade-in form-card">
+        <div className="max-w-xl mx-auto text-center animate-fade-in rounded-xl border border-white/10 bg-white/[0.03] p-10 sm:p-12">
           <CheckCircle className="w-16 h-16 text-gold-500 mx-auto mb-6" aria-hidden />
-          <h2 className="text-2xl font-semibold text-gray-200 mb-4">Thank You</h2>
-          <p className="text-gray-400 leading-relaxed">
-            Your submission has been received and will be reviewed confidentially. We will contact you if your matter aligns with our mandate and legal framework.
+          <h2 className="text-2xl font-semibold text-gray-100 mb-4">Thank you for submitting</h2>
+          <p className="text-gray-400 leading-relaxed mb-4">
+            We have received your information and will review it confidentially.
+          </p>
+          <p className="text-gray-500 text-sm leading-relaxed">
+            We deal with a high volume of inquiries. We will get back to you if your matter aligns with our mandate. We appreciate your patience.
           </p>
         </div>
       </section>
     );
   }
 
+  const inputClass = 'w-full px-4 py-3 rounded-lg bg-white/[0.06] border border-white/10 text-gray-200 placeholder-gray-500 focus:border-gold-500/50 focus:outline-none focus:ring-1 focus:ring-gold-500/30 transition-colors';
+  const labelClass = 'block text-sm font-medium text-gray-300 mb-2';
+
   return (
     <section id="contact" className="py-20 sm:py-28 px-4 sm:px-6 page-bg">
-      <div className="max-w-2xl mx-auto form-card">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-200 mb-2">
+      <div className="max-w-2xl mx-auto rounded-xl border border-white/10 bg-white/[0.03] p-6 sm:p-10">
+        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-100 mb-2">
           Confidential Case Submission
         </h2>
         <p className="text-gray-400 text-sm mb-8">
@@ -104,9 +110,9 @@ const IntakeForm = () => {
             <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
               Contact Information
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-5">
               <div>
-                <label htmlFor="fullName" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="fullName" className={labelClass}>
                   Full Name <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -116,11 +122,11 @@ const IntakeForm = () => {
                   required
                   value={formData.fullName}
                   onChange={handleChange}
-                  className="input-minimal"
+                  className={inputClass}
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="email" className={labelClass}>
                   Email Address <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -130,11 +136,11 @@ const IntakeForm = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="input-minimal"
+                  className={inputClass}
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="phone" className={labelClass}>
                   Phone Number <span className="text-gray-500">(optional)</span>
                 </label>
                 <input
@@ -143,11 +149,11 @@ const IntakeForm = () => {
                   type="tel"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="input-minimal"
+                  className={inputClass}
                 />
               </div>
               <div>
-                <label htmlFor="cityProvince" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="cityProvince" className={labelClass}>
                   City / Province <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -158,7 +164,7 @@ const IntakeForm = () => {
                   value={formData.cityProvince}
                   onChange={handleChange}
                   placeholder="e.g. Toronto, Ontario"
-                  className="input-minimal"
+                  className={inputClass}
                 />
               </div>
             </div>
@@ -168,9 +174,9 @@ const IntakeForm = () => {
             <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
               Institution Information
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-5">
               <div>
-                <label htmlFor="institutionName" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="institutionName" className={labelClass}>
                   Name of Institution <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -180,11 +186,11 @@ const IntakeForm = () => {
                   required
                   value={formData.institutionName}
                   onChange={handleChange}
-                  className="input-minimal"
+                  className={inputClass}
                 />
               </div>
               <div>
-                <label htmlFor="institutionType" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="institutionType" className={labelClass}>
                   Type of Institution <span className="text-red-400">*</span>
                 </label>
                 <select
@@ -193,7 +199,8 @@ const IntakeForm = () => {
                   required
                   value={formData.institutionType}
                   onChange={handleChange}
-                  className="input-minimal bg-dark border border-white/10"
+                  className={`${inputClass} appearance-none cursor-pointer`}
+                  style={{ colorScheme: 'dark' }}
                 >
                   <option value="">Select...</option>
                   {INSTITUTION_TYPES.map((opt) => (
@@ -202,7 +209,7 @@ const IntakeForm = () => {
                 </select>
               </div>
               <div>
-                <label htmlFor="datesOfIncident" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="datesOfIncident" className={labelClass}>
                   Date(s) of Incident <span className="text-gray-500">(optional)</span>
                 </label>
                 <input
@@ -212,7 +219,7 @@ const IntakeForm = () => {
                   value={formData.datesOfIncident}
                   onChange={handleChange}
                   placeholder="e.g. March 2024 or approximate timeframe"
-                  className="input-minimal"
+                  className={inputClass}
                 />
               </div>
             </div>
@@ -222,9 +229,9 @@ const IntakeForm = () => {
             <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
               Matter Details
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-5">
               <div>
-                <label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="description" className={labelClass}>
                   Brief Description of What Happened <span className="text-red-400">*</span>
                 </label>
                 <textarea
@@ -234,7 +241,7 @@ const IntakeForm = () => {
                   rows={8}
                   value={formData.description}
                   onChange={handleChange}
-                  className="input-minimal min-h-[180px] resize-y"
+                  className={`${inputClass} min-h-[180px] resize-y`}
                 />
               </div>
               <div>
@@ -277,7 +284,7 @@ const IntakeForm = () => {
                 name="consent"
                 checked={formData.consent}
                 onChange={handleChange}
-                className="mt-1 rounded border-white/30 text-gold-500 focus:ring-gold-500 bg-dark"
+                className="mt-1 rounded border-white/30 text-gold-500 focus:ring-gold-500 bg-white/[0.06] border border-white/10"
               />
               <span className="text-sm text-gray-400">
                 I understand that submitting this form does not create a solicitor-client relationship. I consent to being contacted if my matter aligns with your mandate. <span className="text-red-400">*</span>
@@ -288,7 +295,7 @@ const IntakeForm = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full sm:w-auto px-8 py-4 bg-gold-500 text-dark font-medium rounded-md hover:bg-gold-400 transition-all duration-200 hover-scale focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 focus:ring-offset-dark disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full sm:w-auto px-8 py-4 bg-gold-500 text-dark font-medium rounded-lg hover:bg-gold-400 transition-all duration-200 hover-scale focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 focus:ring-offset-dark disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {isSubmitting ? 'Submitting...' : 'Submit for Confidential Review'}
           </button>
